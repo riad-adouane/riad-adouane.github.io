@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>رسائل الدعم 03</title>
+<meta name="description" content="أداة بسيطة لإرسال رسائل دعم رياض عدوان، القائمة رقم 1، الرقم 03، إلى أصدقائك عبر واتساب والرسائل القصيرة وفايبر.">
+<meta name="theme-color" content="#0A4A36">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: one-hand phone tool. Deep-green header with the campaign clock, three sticky steps
+   (message, friends, send), and a send card whose big buttons sit within thumb reach. */
+:root{
+  --bg:#F2F5F1; --surface:#FFFFFF; --ink:#11261C; --muted:#5A6E62; --line:rgba(10,74,54,.15); --tint:#E6EEE8;
+  --head:#0A4A36; --head-2:#06301F; --accent:#0A4A36; --red:#C21D25; --gold:#F2D58C;
+  --wa:#1C8A50; --sms:#245A86; --viber:#6A45B0; --bubble:#DDF5E4; --bubble-ink:#10261D;
+  --f:"Alexandria","Segoe UI",Tahoma,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08130E; --surface:#10211A; --ink:#E7F0EA; --muted:#9DB3A6; --line:rgba(190,230,210,.15); --tint:#0C1B15;
+  --head:#0B3A2A; --head-2:#04190F; --accent:#5BC79A; --red:#F0575D;
+  --wa:#1E9A5A; --sms:#2F6CA0; --viber:#7B57C4; --bubble:#173528; --bubble-ink:#E7F0EA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08130E; --surface:#10211A; --ink:#E7F0EA; --muted:#9DB3A6; --line:rgba(190,230,210,.15); --tint:#0C1B15;
+  --head:#0B3A2A; --head-2:#04190F; --accent:#5BC79A; --red:#F0575D;
+  --wa:#1E9A5A; --sms:#2F6CA0; --viber:#7B57C4; --bubble:#173528; --bubble-ink:#E7F0EA; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.7;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:560px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,p{margin:0}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px}
+.num{direction:ltr;unicode-bidi:isolate;display:inline-block;font-variant-numeric:tabular-nums}
+
+/* header */
+.top{background:linear-gradient(160deg,var(--head),var(--head-2));color:#fff;padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:14px 16px}
+.top img{width:46px;height:46px;flex:none;border-radius:50%;background:#fff}
+.top .t{flex:1;min-width:0;line-height:1.35}
+.top h1{font-size:20px;font-weight:800}
+.top small{display:block;font-size:13px;color:#CFE3D8}
+.clock{flex:none;text-align:center;line-height:1.15;background:rgba(0,0,0,.2);border:1px solid rgba(242,213,140,.45);border-radius:14px;padding:6px 10px 8px}
+.clock b{display:block;font-size:20px;font-weight:800;color:var(--gold)}
+.clock span{font-size:11px;color:#E4EFE8}
+.ended{background:var(--red);color:#fff}
+.ended .wrap{padding-block:12px;font-weight:700;font-size:15px;line-height:1.6}
+
+/* steps */
+.steps{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.steps .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-block:8px}
+.step{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:6px 4px 8px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;line-height:1.25;color:var(--muted)}
+.step b{font-size:15px;font-weight:700}
+.step small{font-size:11.5px}
+.step[aria-selected="true"]{background:var(--head);border-color:var(--head);color:#fff}
+.step[aria-selected="true"] small{color:#CFE3D8}
+
+main .wrap{display:flex;flex-direction:column;gap:16px;padding-block:18px 28px}
+.panel{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.label{font-size:13px;font-weight:700;color:var(--muted)}
+.lead{font-size:15px;color:var(--muted)}
+
+/* message step */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px 8px;cursor:pointer;font-size:14.5px;font-weight:500}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--tint);color:var(--accent);font-weight:700}
+textarea{width:100%;min-height:190px;resize:vertical;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);padding:12px 14px;line-height:1.8;font-size:15.5px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.switch{display:flex;align-items:center;gap:10px;font-size:15px;cursor:pointer}
+.switch input{width:22px;height:22px;accent-color:var(--wa)}
+.hint{font-size:13.5px;color:var(--muted)}
+.hint code{font-family:inherit;background:var(--tint);border-radius:6px;padding:0 6px;color:var(--ink)}
+.bubble{background:var(--bubble);color:var(--bubble-ink);border-radius:16px 16px 4px 16px;padding:12px 14px;white-space:pre-wrap;font-size:15px;line-height:1.75;overflow-wrap:anywhere}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:11px 16px 13px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;line-height:1.3;min-height:50px}
+.btn svg{width:22px;height:22px;flex:none}
+.btn.main{background:var(--head);color:#fff}
+.btn.line{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.sms{background:var(--sms);color:#fff}
+.btn.viber{background:var(--viber);color:#fff}
+.btn.share{background:var(--surface);border:1.5px solid var(--line);color:var(--ink)}
+.btn.small{min-height:40px;padding:7px 14px 9px;font-size:14.5px;border-radius:12px}
+.btn[disabled],.btn.off{opacity:.4;pointer-events:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.full{grid-column:1/-1}
+
+/* people step */
+.adders{display:grid;gap:10px}
+.manual{display:grid;grid-template-columns:1fr 1fr auto;gap:8px}
+.manual input,.paste textarea{border:1.5px solid var(--line);border-radius:12px;background:var(--surface);padding:9px 12px;min-width:0;font-size:15px}
+.paste textarea{min-height:110px}
+details.card summary{cursor:pointer;font-weight:700;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary::after{content:"+";font-size:22px;line-height:1;color:var(--muted)}
+details.card[open] summary::after{content:"−"}
+details.card[open] summary{margin-bottom:12px}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.list li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0}
+.list input{border:0;background:transparent;padding:2px 0;min-width:0;width:100%;font-weight:700;font-size:15.5px;border-bottom:1px dashed transparent}
+.list input:focus{border-bottom-color:var(--line);outline:none}
+.list .tel{font-size:13px;color:var(--muted)}
+.pill{font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px 4px;white-space:nowrap;background:var(--tint);color:var(--muted)}
+.pill.sent{background:var(--wa);color:#fff}
+.pill.skip{background:transparent;border:1px solid var(--line)}
+.x{border:0;background:transparent;color:var(--muted);font-size:22px;line-height:1;width:34px;height:34px;border-radius:50%;cursor:pointer}
+.x:hover{background:var(--tint)}
+.empty{text-align:center;color:var(--muted);padding:18px 8px;font-size:15px}
+.count{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.toast{min-height:1.5em;font-size:14px;color:var(--accent);font-weight:700}
+
+/* send step */
+.bar{height:10px;border-radius:999px;background:var(--tint);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--wa);border-radius:inherit;transition:width .3s}
+.who{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.who b{font-size:20px;font-weight:800}
+.who .tel{font-size:14px;color:var(--muted)}
+.after{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;padding:22px 12px}
+.done b{font-size:44px;font-weight:800;color:var(--wa);line-height:1}
+.note{font-size:13.5px;color:var(--muted)}
+
+footer .wrap{padding-block:6px 30px;display:flex;flex-direction:column;gap:8px}
+footer ul{margin:0;padding:0 18px 0 0;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:6px}
+.install{display:flex;align-items:center;justify-content:space-between;gap:12px}
+@media (max-width:380px){.manual{grid-template-columns:1fr}.top h1{font-size:18px}.clock b{font-size:18px}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <img src="../logo.webp" alt="شعار حزب جبهة التحرير الوطني" width="46" height="46">
+  <div class="t"><h1>رسائل الدعم</h1><small>رياض عدوان • القائمة رقم 1 • الرقم 03</small></div>
+  <div class="clock" id="clock" aria-live="polite"><b id="clock-n">--</b><span id="clock-l">يوم للحملة</span></div>
+</div></header>
+<div class="ended" id="ended" hidden><div class="wrap">انتهت الحملة الانتخابية يوم الثلاثاء 24 نوفمبر، والقانون يمنع الدعاية بعدها، فتوقّف الإرسال. يوم السبت 28 نوفمبر لا تنسَ أن تصوّت.</div></div>
+
+<nav class="steps" aria-label="الخطوات"><div class="wrap" role="tablist">
+  <button class="step" role="tab" id="tab-msg" aria-controls="p-msg" aria-selected="true"><b>الرسالة</b><small>اختر النص</small></button>
+  <button class="step" role="tab" id="tab-people" aria-controls="p-people" aria-selected="false"><b>الأصدقاء</b><small id="tab-people-n">0 صديق</small></button>
+  <button class="step" role="tab" id="tab-send" aria-controls="p-send" aria-selected="false"><b>الإرسال</b><small id="tab-send-n">0 أُرسلت</small></button>
+</div></nav>
+
+<main><div class="wrap">
+
+<!-- 1. message -->
+<section class="panel" id="p-msg" role="tabpanel" aria-labelledby="tab-msg">
+  <div class="card panel">
+    <p class="label">اختر نموذجاً، ثم عدّله كما تحب</p>
+    <div class="chips" id="tpls"></div>
+    <textarea id="text" aria-label="نص الرسالة"></textarea>
+    <p class="hint">الكلمة <code>{الاسم}</code> تُستبدل باسم كل صديق تلقائياً. احذفها إن لم ترد ذكر الاسم.</p>
+    <label class="switch"><input type="checkbox" id="usename" checked> اكتب اسم الصديق في الرسالة</label>
+  </div>
+  <div class="card panel">
+    <p class="label">هكذا تصل الرسالة إلى صديقك</p>
+    <div class="bubble" id="preview"></div>
+  </div>
+  <button class="btn main" type="button" data-go="people">التالي: اختر أصدقاءك ←</button>
+</section>
+
+<!-- 2. people -->
+<section class="panel" id="p-people" role="tabpanel" aria-labelledby="tab-people" hidden>
+  <div class="adders">
+    <button class="btn main" type="button" id="pick" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M18.5 8v6M15.5 11h6"/></svg>
+      اختر من جهات الاتصال في هاتفك
+    </button>
+    <details class="card" id="d-manual">
+      <summary>أضف صديقاً واحداً</summary>
+      <form class="manual" id="f-manual" autocomplete="off">
+        <input id="m-name" placeholder="الاسم" aria-label="الاسم">
+        <input id="m-tel" placeholder="0661234567" inputmode="tel" aria-label="رقم الهاتف" dir="ltr">
+        <button class="btn main small" type="submit">أضف</button>
+      </form>
+    </details>
+    <details class="card" id="d-paste">
+      <summary>ألصق قائمة أرقام</summary>
+      <form class="paste panel" id="f-paste">
+        <textarea id="p-text" placeholder="كل صديق في سطر: الاسم ثم الرقم&#10;أحمد 0661 23 45 67&#10;سعاد، 0770123456" aria-label="قائمة الأصدقاء"></textarea>
+        <button class="btn main small" type="submit">أضف القائمة</button>
+      </form>
+    </details>
+  </div>
+  <p class="toast" id="toast" aria-live="polite"></p>
+  <div class="card">
+    <div class="count"><p class="label" id="people-count">قائمتك فارغة</p><button class="btn line small" type="button" id="clear" hidden>امسح القائمة</button></div>
+    <ul class="list" id="list"></ul>
+    <p class="empty" id="people-empty">أضف أصدقاءك بإحدى الطرق أعلاه. أرسل فقط لمن يعرفك.</p>
+  </div>
+  <button class="btn main" type="button" data-go="send">التالي: ابدأ الإرسال ←</button>
+</section>
+
+<!-- 3. send -->
+<section class="panel" id="p-send" role="tabpanel" aria-labelledby="tab-send" hidden>
+  <div class="card panel">
+    <div class="count"><p class="label" id="progress-l">أُرسلت 0 من 0</p><button class="btn line small" type="button" id="restart" hidden>ابدأ من جديد</button></div>
+    <div class="bar" aria-hidden="true"><i id="progress"></i></div>
+  </div>
+
+  <div class="card panel" id="current">
+    <div class="who"><div><p class="label">التالي</p><b id="c-name"></b></div><span class="tel num" id="c-tel"></span></div>
+    <div class="bubble" id="c-text"></div>
+    <div class="grid2">
+      <a class="btn wa send" id="s-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>واتساب</a>
+      <a class="btn sms send" id="s-sms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="13" rx="3"/><path d="M8 21l3-3.5"/></svg>رسالة قصيرة</a>
+      <a class="btn viber send" id="s-viber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 4h14v11H11l-4 4v-4H5z"/><path d="M9 9.5h6"/></svg>فايبر</a>
+      <button class="btn share send" type="button" id="s-share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg>مسنجر وغيره</button>
+    </div>
+    <p class="note" id="c-note">اضغط على التطبيق، ثم اضغط «إرسال» فيه، وعُد إلى هنا.</p>
+    <div class="after">
+      <button class="btn main" type="button" id="next">أرسلتها ✓ التالي</button>
+      <button class="btn line" type="button" id="skip">تخطَّ</button>
+    </div>
+  </div>
+
+  <div class="card done" id="done" hidden>
+    <b id="done-n">0</b><p>رسالة أرسلتها. شكراً لك على دعم رياض عدوان.</p>
+    <p class="note">أضف أصدقاء آخرين، أو أرسل الرسالة إلى مجموعاتك وحالتك.</p>
+  </div>
+  <div class="card done" id="none" hidden>
+    <p>لم تضف أصدقاء بعد.</p>
+    <button class="btn main small" type="button" data-go="people">أضف أصدقاءك</button>
+  </div>
+
+  <div class="card panel">
+    <p class="label">للمجموعات والحالة</p>
+    <p class="lead">رسالة واحدة دون اسم، تختار أنت في التطبيق المجموعة أو الحالة.</p>
+    <div class="grid2">
+      <a class="btn wa small send" id="g-wa" target="_blank" rel="noopener">واتساب</a>
+      <a class="btn viber small send" id="g-viber">فايبر</a>
+      <button class="btn share small send" type="button" id="g-share">تطبيق آخر</button>
+      <button class="btn line small" type="button" id="g-copy">انسخ النص</button>
+    </div>
+  </div>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <div class="card install" id="install" hidden><p>ثبّت الأداة على شاشة هاتفك لتفتحها كتطبيق.</p><button class="btn main small" type="button" id="install-btn">ثبّت</button></div>
+  <ul>
+    <li>كل رسالة تُرسَل بضغطة منك، حتى لا يُحظر رقمك في واتساب.</li>
+    <li>أرسل لمن يعرفك فقط، ورسالة واحدة لكل شخص. وإن طلب أحد ألا تراسله فاحترم رغبته.</li>
+    <li>أرقام أصدقائك تبقى في هاتفك فقط، ولا تُرسَل إلى أي مكان.</li>
+    <li>آخر يوم للحملة الانتخابية: الثلاثاء 24 نوفمبر 2026.</li>
+  </ul>
+</div></footer>
+
+<script>
+(function(){
+  var SITE='https://riad-adouane.github.io';
+  var END=Date.parse('2026-11-25T00:00:00+01:00');     // campaign closes at the end of Tue 24 Nov, Algeria time
+  var TPL=[
+    {id:'t1',name:'رسالة عامة',text:'السلام عليكم {الاسم}، كيف حالك؟\nيوم السبت 28 نوفمبر ننتخب المجلس الشعبي البلدي للرحبات. أنا أساند رياض عدوان: ابن الرحبات، 27 سنة، ماستر في الحقوق، «يعرف القانون… ويعرف ناسه».\nصوّت للقائمة رقم 1، وضع علامة أمام اسمه: الرقم 03.\nتعرّف عليه: '+SITE},
+    {id:'t2',name:'قصيرة',text:'{الاسم}، يوم السبت 28 نوفمبر: القائمة رقم 1، وعلامة أمام رياض عدوان، الرقم 03. ابن الرحبات، «يعرف القانون… ويعرف ناسه».\n'+SITE},
+    {id:'t3',name:'للشباب',text:'السلام عليكم {الاسم}، الشباب لازم يكون عندهم صوت في البلدية. رياض عدوان شاب من الرحبات، عمره 27 سنة ودرس القانون.\nيوم السبت 28 نوفمبر: القائمة رقم 1، وعلامة أمام الرقم 03.\n'+SITE},
+    {id:'t4',name:'تذكير بالعلامة',text:'تذكير مهم {الاسم}: في ورقة القائمة رقم 1 ضع علامة أمام رياض عدوان، الرقم 03، لأن الورقة دون علامة تُحتسب للقائمة فقط ولا تُحتسب له.\nالسبت 28 نوفمبر. '+SITE}
+  ];
+  var KEY='riad03-rasail-v1';
+  var S={tpl:'t1',text:TPL[0].text,useName:true,people:[]};
+  try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&saved.people)S=Object.assign(S,saved)}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  var $=function(id){return document.getElementById(id)};
+  var IOS=/iPhone|iPad|iPod/.test(navigator.userAgent);
+
+  // ---------- numbers ----------
+  function digits(s){return String(s||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)})}
+  function norm(raw){
+    var s=digits(raw).replace(/[^\d+]/g,'');
+    if(s.indexOf('00')===0)s='+'+s.slice(2);
+    if(/^0[5-7]\d{8}$/.test(s))return '+213'+s.slice(1);
+    if(/^[5-7]\d{8}$/.test(s))return '+213'+s;
+    if(/^213[5-7]\d{8}$/.test(s))return '+'+s;
+    if(/^\+213[5-7]\d{8}$/.test(s))return s;
+    if(/^\+(?!213)\d{8,14}$/.test(s))return s;          // relatives abroad
+    return null;
+  }
+  function show(t){var m=/^\+213(\d{3})(\d{2})(\d{2})(\d{2})$/.exec(t);return m?'0'+m[1]+' '+m[2]+' '+m[3]+' '+m[4]:t}
+
+  // ---------- message ----------
+  function personal(name){
+    var t=S.text; name=(name||'').trim();
+    if(S.useName&&name)return t.replace(/\{الاسم\}/g,name);
+    return t.replace(/^\{الاسم\}،\s*/,'').replace(/\s*\{الاسم\}/g,'');
+  }
+  function renderTpls(){
+    $('tpls').innerHTML='';
+    TPL.forEach(function(t){
+      var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t.name;
+      b.setAttribute('aria-pressed',S.tpl===t.id);
+      b.onclick=function(){S.tpl=t.id;S.text=t.text;$('text').value=S.text;save();renderTpls();renderPreview();renderSend()};
+      $('tpls').appendChild(b);
+    });
+  }
+  function renderPreview(){var p=S.people.find(function(x){return x.st==='new'});$('preview').textContent=personal(p&&p.name?p.name:'أحمد')}
+  $('text').value=S.text;
+  $('text').addEventListener('input',function(){S.text=this.value;S.tpl='';save();renderTpls();renderPreview();renderSend()});
+  $('usename').checked=S.useName;
+  $('usename').addEventListener('change',function(){S.useName=this.checked;save();renderPreview();renderSend()});
+
+  // ---------- people ----------
+  var toastT;
+  function toast(msg){$('toast').textContent=msg;clearTimeout(toastT);toastT=setTimeout(function(){$('toast').textContent=''},4000)}
+  function add(name,tel){
+    var n=norm(tel);if(!n)return 'bad';
+    if(S.people.some(function(p){return p.tel===n}))return 'dup';
+    S.people.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:(name||'').replace(/\s+/g,' ').trim(),tel:n,st:'new'});
+    return 'ok';
+  }
+  function report(r){
+    var ok=r.filter(function(x){return x==='ok'}).length,dup=r.filter(function(x){return x==='dup'}).length,bad=r.filter(function(x){return x==='bad'}).length;
+    var m=[];if(ok)m.push('أُضيف '+ok);if(dup)m.push(dup+' موجود من قبل');if(bad)m.push(bad+' رقم غير صالح');
+    toast(m.join('، ')||'لم يُضف أحد');save();renderPeople();renderSend();renderPreview();
+  }
+  if('contacts' in navigator&&'select' in navigator.contacts){
+    $('pick').hidden=false;
+    $('pick').onclick=function(){
+      navigator.contacts.select(['name','tel'],{multiple:true}).then(function(list){
+        var r=[];(list||[]).forEach(function(c){
+          var tels=(c.tel||[]).map(norm).filter(Boolean);
+          var t=tels.find(function(x){return /^\+213[5-7]/.test(x)})||tels[0];
+          r.push(t?add(c.name&&c.name[0],t):'bad');
+        });report(r);
+      }).catch(function(){toast('لم يُسمح بفتح جهات الاتصال. أضف الأرقام يدوياً أو بالنسخ واللصق.')});
+    };
+  }else{$('d-manual').open=true}
+  $('f-manual').addEventListener('submit',function(e){
+    e.preventDefault();var r=add($('m-name').value,$('m-tel').value);
+    if(r==='bad'){toast('الرقم غير صالح. اكتبه مثلاً: 0661234567');return}
+    if(r==='ok'){$('m-name').value='';$('m-tel').value='';$('m-name').focus()}
+    report([r]);
+  });
+  $('f-paste').addEventListener('submit',function(e){
+    e.preventDefault();var r=[];
+    digits($('p-text').value).split(/\n+/).forEach(function(line){
+      var m=line.match(/(\+|00)?\d[\d\s.\-]{7,}\d/);if(!m)return;
+      var name=line.replace(m[0],'').replace(/[،,;:\-–\t|]+/g,' ').trim();
+      r.push(add(name,m[0]));
+    });
+    if(!r.length){toast('لم أجد أرقاماً في النص.');return}
+    $('p-text').value='';report(r);
+  });
+  function renderPeople(){
+    var ul=$('list');ul.innerHTML='';
+    S.people.forEach(function(p){
+      var li=document.createElement('li');
+      var d=document.createElement('div');
+      var inp=document.createElement('input');inp.value=p.name;inp.placeholder='بدون اسم';inp.setAttribute('aria-label','اسم الصديق');
+      inp.addEventListener('change',function(){p.name=this.value.trim();save();renderSend();renderPreview()});
+      var t=document.createElement('span');t.className='tel num';t.textContent=show(p.tel);
+      d.appendChild(inp);d.appendChild(t);
+      var pill=document.createElement('span');pill.className='pill'+(p.st==='sent'?' sent':p.st==='skip'?' skip':'');
+      pill.textContent=p.st==='sent'?'أُرسلت':p.st==='skip'?'تُخطّي':'لم تُرسل';
+      var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','احذف '+(p.name||show(p.tel)));
+      x.onclick=function(){S.people=S.people.filter(function(q){return q!==p});save();renderPeople();renderSend();renderPreview()};
+      li.appendChild(d);li.appendChild(pill);li.appendChild(x);ul.appendChild(li);
+    });
+    var n=S.people.length;
+    $('people-empty').hidden=n>0;$('clear').hidden=n===0;
+    $('people-count').textContent=n?n+' صديق في قائمتك':'قائمتك فارغة';
+    $('tab-people-n').textContent=n+' صديق';
+  }
+  var clearArmed=false;
+  $('clear').onclick=function(){
+    if(!clearArmed){clearArmed=true;this.textContent='اضغط مرة أخرى للتأكيد';var b=this;setTimeout(function(){clearArmed=false;b.textContent='امسح القائمة'},3500);return}
+    S.people=[];clearArmed=false;this.textContent='امسح القائمة';save();renderPeople();renderSend();renderPreview();
+  };
+
+  // ---------- send ----------
+  function ended(){return Date.now()>=END}
+  function links(text,tel){
+    var e=encodeURIComponent(text);
+    return {wa:'https://wa.me/'+(tel?tel.replace('+',''):'')+'?text='+e,
+            sms:'sms:'+(tel||'')+(IOS?'&':'?')+'body='+e,
+            viber:'viber://forward?text='+e};
+  }
+  function share(text){
+    if(navigator.share){navigator.share({text:text}).catch(function(){})}
+    else copy(text);
+  }
+  function copy(text){
+    try{navigator.clipboard.writeText(text).then(function(){toastSend('نُسخ النص. ألصقه في التطبيق الذي تريد.')},function(){toastSend('انسخ النص من المعاينة.')})}
+    catch(e){toastSend('انسخ النص من المعاينة.')}
+  }
+  function toastSend(m){$('c-note').textContent=m}
+  function current(){return S.people.find(function(p){return p.st==='new'})}
+  function renderSend(){
+    var total=S.people.length,sent=S.people.filter(function(p){return p.st==='sent'}).length,c=current();
+    $('progress-l').textContent='أُرسلت '+sent+' من '+total;
+    $('progress').style.width=total?(100*S.people.filter(function(p){return p.st!=='new'}).length/total)+'%':'0';
+    $('tab-send-n').textContent=sent+' أُرسلت';
+    $('restart').hidden=!S.people.some(function(p){return p.st!=='new'});
+    $('current').hidden=!c;$('done').hidden=!!c||!total;$('none').hidden=!!total;$('done-n').textContent=sent;
+    if(c){
+      var txt=personal(c.name),L=links(txt,c.tel);
+      $('c-name').textContent=c.name||'صديق بدون اسم';$('c-tel').textContent=show(c.tel);$('c-text').textContent=txt;
+      $('s-wa').href=L.wa;$('s-sms').href=L.sms;$('s-viber').href=L.viber;
+      $('s-share').onclick=function(){share(txt)};
+    }
+    var g=personal(''),G=links(g,'');
+    $('g-wa').href='https://wa.me/?text='+encodeURIComponent(g);$('g-viber').href=G.viber;
+    $('g-share').onclick=function(){share(g)};$('g-copy').onclick=function(){copy(g)};
+    var off=ended();
+    document.querySelectorAll('.send').forEach(function(el){el.classList.toggle('off',off);if(off)el.setAttribute('aria-disabled','true');else el.removeAttribute('aria-disabled')});
+  }
+  $('s-viber').addEventListener('click',function(){toastSend('في فايبر اختر الصديق، ثم اضغط إرسال.')});
+  function mark(st){var c=current();if(!c)return;c.st=st;save();renderSend();renderPeople();renderPreview();$('c-note').textContent='اضغط على التطبيق، ثم اضغط «إرسال» فيه، وعُد إلى هنا.'}
+  $('next').onclick=function(){mark('sent')};
+  $('skip').onclick=function(){mark('skip')};
+  $('restart').onclick=function(){S.people.forEach(function(p){p.st='new'});save();renderSend();renderPeople();renderPreview()};
+
+  // ---------- tabs ----------
+  var tabs=['msg','people','send'];
+  function go(k){
+    tabs.forEach(function(t){$('tab-'+t).setAttribute('aria-selected',t===k);$('p-'+t).hidden=t!==k});
+    try{sessionStorage.setItem(KEY+'-tab',k)}catch(e){}
+    window.scrollTo(0,0);
+  }
+  tabs.forEach(function(t){$('tab-'+t).onclick=function(){go(t)}});
+  document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(b.getAttribute('data-go'))}});
+
+  // ---------- campaign clock ----------
+  function clock(){
+    var ms=END-Date.now();
+    if(ms<=0){$('clock-n').textContent='انتهت';$('clock-l').textContent='الحملة';$('ended').hidden=false;renderSend();return false}
+    var d=Math.floor(ms/86400000);
+    if(d>=1){$('clock-n').textContent=d;$('clock-l').textContent=d===1?'يوم للحملة':d===2?'يومان للحملة':(d<=10?'أيام للحملة':'يوماً للحملة')}
+    else{$('clock-n').textContent='آخر يوم';$('clock-l').textContent='للحملة'}
+    return true;
+  }
+  if(clock()){var iv=setInterval(function(){if(!clock())clearInterval(iv)},60000)}
+
+  // ---------- install ----------
+  var deferred;
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;$('install').hidden=false});
+  $('install-btn').onclick=function(){if(deferred){deferred.prompt();deferred=null;$('install').hidden=true}};
+  if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(function(){})}
+
+  renderTpls();renderPeople();renderSend();renderPreview();
+  try{var tb=sessionStorage.getItem(KEY+'-tab');if(tb&&tabs.indexOf(tb)>=0)go(tb)}catch(e){}
+})();
+</script>
+</body>
+</html>
