@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>رسالة بالاسم 03</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0A4A36">
+<link rel="icon" href="../logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800&family=Amiri:wght@400;700&display=swap">
+<style id="pagesize">@page{size:297mm 210mm;margin:0}</style>
+<style>
+/* Layout: a campaign desk tool. Left to right on a computer: the list and options, then the stack of
+   letters as they will print (A5, two per A4 sheet). Only the letters print. */
+:root{
+  --bg:#EEF2EE; --surface:#FFFFFF; --ink:#11261C; --muted:#5A6E62; --line:rgba(10,74,54,.16);
+  --green:#0A4A36; --green-2:#06301F; --red:#B3121B; --gold:#C9A04A; --gold-soft:#F2D58C;
+  --f:"Alexandria","Segoe UI",Tahoma,sans-serif; --f-letter:"Amiri","Traditional Arabic","Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.7}
+h1,h2,h3,p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px;border-radius:8px}
+
+.top{background:linear-gradient(160deg,var(--green),var(--green-2));color:#fff}
+.top .in{max-width:1400px;margin:auto;padding:12px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:12px}
+.top img{width:42px;height:42px;border-radius:50%;background:#fff}
+.top b{display:block;font-size:18px;font-weight:800;line-height:1.3}
+.top small{display:block;font-size:12.5px;color:#CFE3D8}
+.layout{max-width:1400px;margin:auto;padding:18px max(16px,env(safe-area-inset-left,0px)) 40px;display:grid;grid-template-columns:420px 1fr;gap:20px;align-items:start}
+.ui{display:flex;flex-direction:column;gap:14px;position:sticky;top:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.card h2{font-size:16px;font-weight:800}
+.help{font-size:13px;color:var(--muted)}
+.help code{font-family:inherit;background:#EEF3EF;border-radius:6px;padding:0 6px;color:var(--ink);white-space:nowrap}
+textarea{width:100%;min-height:210px;resize:vertical;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;line-height:1.8;font-size:14.5px;background:#fff}
+label.f{display:grid;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+input,select{border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;font-size:14.5px;min-width:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;min-height:46px;padding:9px 16px 11px;font-weight:800;font-size:15.5px;cursor:pointer;background:var(--green);color:#fff}
+.btn.red{background:var(--red)}
+.btn.line{background:transparent;border:1.5px solid var(--line);color:var(--ink);font-weight:700}
+.status{font-size:13.5px;font-weight:700;color:var(--green);min-height:1.4em}
+.status.err{color:var(--red)}
+.warn{font-size:13px;line-height:1.7;background:#FFF6E0;border:1px solid #EBD39A;border-radius:12px;padding:10px 12px}
+
+/* preview */
+.preview{display:flex;flex-direction:column;gap:18px;align-items:center;min-width:0}
+.pv-head{align-self:stretch;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.scaler{width:calc(297mm * var(--k));height:calc(210mm * var(--k));--k:.62;flex:none}
+.scaler.a5{width:calc(148mm * var(--k));height:calc(210mm * var(--k))}
+.scaler>.sheet{transform:scale(var(--k));transform-origin:top right;box-shadow:0 10px 30px -14px rgba(10,40,30,.45)}
+.empty{padding:40px 20px;text-align:center;color:var(--muted);background:var(--surface);border:1.5px dashed var(--line);border-radius:16px;align-self:stretch}
+
+/* ---------- the printed letter ---------- */
+.sheet{width:297mm;height:210mm;background:#fff;display:flex;direction:rtl}
+.sheet.a5{width:148mm}
+.letter{position:relative;width:148mm;height:210mm;padding:11mm 13mm 9mm;display:flex;flex-direction:column;color:#16261D;overflow:hidden}
+.sheet:not(.a5) .letter+.letter{border-right:.3mm dashed #B9C4BE}
+.lh{display:grid;grid-template-columns:17mm 1fr auto;gap:3.5mm;align-items:center;padding-bottom:3.2mm;border-bottom:.6mm solid var(--green)}
+.lh img{width:17mm;height:17mm;border-radius:50%}
+.lh b{display:block;font-family:var(--f);font-weight:800;font-size:17pt;line-height:1.2;color:var(--green)}
+.lh small{display:block;font-family:var(--f);font-weight:500;font-size:7.6pt;line-height:1.35;color:#4D6357}
+.lh .n{font-family:var(--f);font-weight:800;text-align:center;line-height:1.1;background:#D2232C;color:#fff;border:.45mm solid var(--gold-soft);border-radius:2.4mm;padding:1.2mm 2.6mm 1.8mm}
+.lh .n small{color:#FFE9EA;font-size:6.4pt}
+.lh .n span{display:block;font-size:15pt;direction:ltr}
+.gold{height:.5mm;background:var(--gold);margin-top:.8mm;opacity:.7}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:4mm;margin-top:3.2mm;font-family:var(--f);font-size:8pt;color:#4D6357}
+.to{margin-top:3mm;font-family:var(--f-letter);font-weight:700;font-size:13.6pt;line-height:1.5}
+.to .pl{display:block;font-family:var(--f);font-weight:500;font-size:8.6pt;color:#4D6357}
+.body{margin-top:2.4mm;font-family:var(--f-letter);font-size:11.7pt;line-height:1.66;text-align:justify;display:flex;flex-direction:column;gap:1.6mm;flex:1;min-height:0}
+.body .ask{font-weight:700;color:#0A4A36}
+.body .ask b{color:var(--red)}
+.sig{display:flex;justify-content:flex-end;margin-top:2mm}
+.sig div{text-align:center;font-family:var(--f-letter);line-height:1.4;min-width:42mm}
+.sig b{display:block;font-size:13pt}
+.sig i{display:block;height:9mm;border-bottom:.3mm dotted #8A9A90;margin:0 2mm}
+.sig small{display:block;font-family:var(--f);font-size:7pt;color:#6A7C71;margin-top:.8mm}
+.lf{margin-top:3mm;padding-top:2mm;border-top:.3mm solid #D3DED7;display:flex;justify-content:space-between;gap:4mm;font-family:var(--f);font-size:7.2pt;color:#4D6357}
+.lf .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.blank{display:inline-block;min-width:38mm;border-bottom:.3mm dotted #6F8077}
+
+@media (max-width:980px){.layout{grid-template-columns:1fr}.ui{position:static}.scaler{--k:.4}}
+@media print{
+  body{background:#fff}
+  .top,.ui,.pv-head,.empty{display:none!important}
+  .layout{display:block;padding:0;max-width:none}
+  .preview{display:block;gap:0}
+  .scaler{width:auto!important;height:auto!important;--k:1}
+  .scaler>.sheet{transform:none;box-shadow:none}
+  .sheet{break-after:page;page-break-after:always}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+  <img src="../logo.webp" alt="">
+  <div><b>رسالة بالاسم</b><small>رسائل رياض عدوان إلى عائلات الرحبات • للطباعة</small></div>
+</div></header>
+
+<div class="layout">
+<aside class="ui">
+  <div class="card">
+    <h2>1. قائمة العائلات</h2>
+    <p class="help">عائلة في كل سطر، والخانات مفصولة بفاصلة أو بخط مائل:<br>
+      <code>العائلة، كبير العائلة، المشتة، السفير، الموضوع</code><br>
+      كل الخانات بعد اسم العائلة اختيارية. الموضوع واحد من: <code>طرق</code> <code>فلاحة</code> <code>شباب</code> <code>نساء</code>.</p>
+    <textarea id="list" aria-label="قائمة العائلات" placeholder="مثال:
+بن علي، الحاج محمد بن علي، مشتة أولاد قبوج، أحمد، فلاحة
+بوزيد، ، حي الرحبات، سليم، شباب
+مسعودي"></textarea>
+    <button class="btn" type="button" id="make">حضّر الرسائل</button>
+    <p class="status" id="status" role="status"></p>
+  </div>
+  <div class="card">
+    <h2>2. خيارات</h2>
+    <div class="row">
+      <label class="f">تاريخ الرسالة<input id="date" value="21 نوفمبر 2026"></label>
+      <label class="f">الموضوع الافتراضي<select id="topic"></select></label>
+    </div>
+    <label class="f">الطباعة<select id="size">
+      <option value="a4">رسالتان في ورقة A4 (تُقص في الوسط)</option>
+      <option value="a5">رسالة في كل ورقة A5</option>
+    </select></label>
+  </div>
+  <div class="card">
+    <h2>3. الطباعة</h2>
+    <button class="btn red" type="button" id="print">اطبع الرسائل</button>
+    <button class="btn line" type="button" id="blankBtn">نسخة فارغة يُكتب فيها الاسم باليد</button>
+    <p class="warn">قبل الطباعة: يقرأ رياض الرسائل ويوافق عليها، ثم يوقّعها بيده. توزَّع قبل نهاية الثلاثاء 24 نوفمبر، آخر يوم للحملة. القائمة تبقى في هذا الجهاز فقط ولا تُرسل إلى أي مكان.</p>
+  </div>
+</aside>
+
+<section class="preview" id="preview" aria-label="معاينة الرسائل">
+  <div class="pv-head" id="pvhead" hidden><span id="pvcount"></span><span>معاينة مصغّرة لما سيُطبع</span></div>
+  <div class="empty" id="empty">ألصق قائمة العائلات واضغط «حضّر الرسائل»، أو اختر النسخة الفارغة.</div>
+  <div id="sheets" style="display:contents"></div>
+</section>
+</div>
+
+<script>
+(function(){
+  var KEY='riad03-rasala-v1';
+  var $=function(id){return document.getElementById(id)};
+  var TOPICS=[
+    {k:'التزامات',label:'الالتزامات الثلاثة',t:'ولا أعدكم بما لا أملك، بل بما هو من صلاحيات المجلس: باب مفتوح كل أسبوع لكل مواطن، وقائمة أولويات معلنة للطرق والمسالك نحو المشاتي نتابعها أمامكم، ونشر كلفة كل مشروع ومدته حتى تحاسبونا.'},
+    {k:'طرق',label:'الطرق والمسالك',t:'وأعرف أن الطريق والمسلك أول ما يشغل أهل المشاتي، ولهذا التزمت بقائمة أولويات واضحة للطرق والمسالك نحو المشاتي، نعلنها للناس ونتابعها أمامهم. ولا أعد بما لا يملكه المجلس، بل بالمتابعة والشفافية.'},
+    {k:'فلاحة',label:'الفلاحة والفلاحون',t:'والفلاحة قلب الرحبات. أريد لفلاحينا مسالك فلاحية صالحة، ومرافقة في ملفات الدعم والتأمين، وصوتاً داخل المجلس يدافع عنهم عند المصالح المعنية.'},
+    {k:'شباب',label:'الشباب والعمل',t:'وشبابنا يستحق فرصاً هنا في بلديته. سأعمل على تقريب المستثمرين الخواص من الرحبات، وتكون أبواب المجلس مفتوحة للجمعيات والرياضة والمشاريع الصغيرة.'},
+    {k:'نساء',label:'المرأة الريفية والحرفيات',t:'والمرأة الريفية والحرفيات شريكات حقيقيات في التنمية، ومرافقتهن في ملفات الدعم جزء من برنامجنا، وسنعرض مبادرتنا على كل المهتمين بإشراكهن في التنمية المحلية.'}
+  ];
+  var INTRO=[
+    'أكتب إليكم بنفسي، لا عبر منشور أو إعلان، لأن لعائلتكم كلمتها ومكانتها {في}. أنا رياض عدوان، ابن الرحبات، متحصل على ماستر في الحقوق، ومترشح للمجلس الشعبي البلدي في قائمة حزب جبهة التحرير الوطني رقم 1، بالرقم 03.',
+    'اسمحوا لي أن أطرق بابكم بهذه الرسالة قبل أن أطرقه بنفسي. أنا رياض عدوان، ابن الرحبات، درست القانون وتحصلت على شهادة الماستر في الحقوق، وأنا اليوم مترشح للمجلس الشعبي البلدي في قائمة حزب جبهة التحرير الوطني رقم 1، بالرقم 03.',
+    'لعائلتكم {في} مكانة أعرفها وأقدّرها، ولهذا أردت أن تصلكم كلمتي مكتوبة باسمكم. أنا رياض عدوان، ابن الرحبات، متحصل على ماستر في الحقوق، ومترشح في قائمة حزب جبهة التحرير الوطني رقم 1، بالرقم 03.'
+  ];
+  var ASK=[
+    'يوم السبت 28 نوفمبر، أطلب ثقتكم وثقة كل من في بيتكم: خذوا ورقة القائمة رقم 1، وضعوا <b>علامة × أمام اسمي، الرقم 03</b>. فالورقة دون علامة تُحسب للقائمة فقط، ولا تُحسب لي.',
+    'ورجائي منكم يوم السبت 28 نوفمبر بسيط: ورقة القائمة رقم 1، و<b>علامة × أمام الرقم 03، رياض عدوان</b>. هذه العلامة هي التي تقوّي موقعي داخل المجلس لخدمتكم، والورقة دون علامة لا تُحسب لي.',
+    'وموعدنا يوم السبت 28 نوفمبر. صوّتوا للقائمة رقم 1، وضعوا <b>علامة × أمام اسمي، الرقم 03</b>، فكل علامة أمام اسمي تقوّي صوت الرحبات داخل المجلس. وتذكّروا أن الورقة دون علامة تُحسب للقائمة فقط.'
+  ];
+  var CLOSE=['وتقبّلوا مني فائق التقدير والاحترام.','ودمتم سنداً للرحبات وأهلها، مع خالص التقدير.','مع خالص المودة والاحترام.'];
+
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function topicOf(word,def){
+    var w=(word||'').trim();
+    for(var i=0;i<TOPICS.length;i++){if(w&&(w.indexOf(TOPICS[i].k)>=0||TOPICS[i].k.indexOf(w)>=0))return TOPICS[i]}
+    if(/طريق|مسلك|مسالك/.test(w))return TOPICS[1];
+    if(/فلاح/.test(w))return TOPICS[2];
+    if(/شاب|شباب|عمل|شغل/.test(w))return TOPICS[3];
+    if(/نساء|امرأة|مرأة|حرف/.test(w))return TOPICS[4];
+    return def;
+  }
+  function placeLine(m){
+    if(!m)return '';
+    if(/قبوج|لونيس|لمودع/.test(m))return 'وقد سعدت بلقاء أهلنا في اللقاءين الجواريين بمشتة أولاد قبوج يومي 15 و17 نوفمبر، وسمعت منهم ما يشغلهم، وهو ما سأحمله معي إلى المجلس.';
+    if(/دريس/.test(m))return 'وقد سعدت بلقاء أهلنا عند افتتاح مداومة أولاد دريس يوم 12 نوفمبر، وسمعت منهم ما يشغلهم، وهو ما سأحمله معي إلى المجلس.';
+    return 'وأهلنا في '+esc(m)+' يستحقون أن تصلهم التنمية والخدمات بسهولة وقريباً منهم، وهذا ما سأدافع عنه داخل المجلس.';
+  }
+  function letter(p,k,blank){
+    var B='<span class="blank"></span>';
+    var fam=blank?B:esc(p.fam), mech=blank?'':esc(p.mech);
+    var to=blank?'إلى عائلة '+B+' الكريمة'
+      :(p.elder?'إلى '+esc(p.elder)+'،<br>وإلى عائلة '+fam+' الكريمة':'إلى عائلة '+fam+' الكريمة');
+    var pl=blank?'<span class="pl">المشتة / الحي: '+B+'</span>':(mech?'<span class="pl">'+mech+'</span>':'');
+    var fi=mech?'في '+mech:'في بلديتنا';
+    var intro=INTRO[k%3].replace('{في}',fi);
+    var place=blank?'':placeLine(p.mech);
+    var topic=(p.topic||TOPICS[0]).t;
+    var amb=blank?'تصلكم هذه الرسالة بيد '+B+'، من أهلنا الذين تعرفونهم ويعرفونكم، وبابي مفتوح لكم قبل الانتخابات وبعدها.'
+      :(p.amb?'تصلكم هذه الرسالة بيد '+esc(p.amb)+'، من أهلنا الذين تعرفونهم ويعرفونكم، وبابي مفتوح لكم قبل الانتخابات وبعدها.':'وبابي مفتوح لكم قبل الانتخابات وبعدها.');
+    return '<article class="letter">'+
+      '<div class="lh"><img src="../logo.webp" alt=""><div><b>رياض عدوان</b><small>مترشح للمجلس الشعبي البلدي لبلدية الرحبات<br>قائمة حزب جبهة التحرير الوطني</small></div>'+
+      '<div class="n"><small>القائمة 1</small><span>03</span></div></div><div class="gold"></div>'+
+      '<div class="meta"><span>الرحبات، في '+esc($('date').value)+'</span><span>رسالة شخصية</span></div>'+
+      '<div class="to">'+to+pl+'</div>'+
+      '<div class="body"><p>السلام عليكم ورحمة الله تعالى وبركاته،</p><p>'+intro+(place?' '+place:'')+'</p><p>'+topic+'</p><p class="ask">'+ASK[(k+1)%3]+'</p><p>'+amb+' '+CLOSE[(k+2)%3]+'</p></div>'+
+      '<div class="sig"><div><b>رياض عدوان</b><i></i><small>التوقيع</small></div></div>'+
+      '<div class="lf"><span>واتساب: <span class="ltr">0664 64 64 37</span></span><span class="ltr">riad-adouane.github.io</span></div>'+
+      '</article>';
+  }
+  function parse(text,def){
+    var out=[];
+    text.split(/\n+/).forEach(function(line){
+      line=line.trim();if(!line)return;
+      var f=line.split(/\s*[،,;\/|\t]\s*/);
+      if(!f[0])return;
+      out.push({fam:f[0].replace(/^عائلة\s+/,'').trim(),elder:(f[1]||'').trim(),mech:(f[2]||'').trim(),amb:(f[3]||'').trim(),topic:topicOf(f[4],def)});
+    });
+    return out;
+  }
+  function render(list,blank){
+    var a5=$('size').value==='a5', html='', per=a5?1:2, n=list.length;
+    for(var i=0;i<n;i+=per){
+      var inner='';
+      for(var j=0;j<per&&i+j<n;j++)inner+=letter(list[i+j],i+j,blank);
+      html+='<div class="scaler'+(a5?' a5':'')+'"><div class="sheet'+(a5?' a5':'')+'">'+inner+'</div></div>';
+    }
+    $('sheets').innerHTML=html;
+    $('pagesize').textContent=a5?'@page{size:148mm 210mm;margin:0}':'@page{size:297mm 210mm;margin:0}';
+    $('empty').hidden=n>0;$('pvhead').hidden=n===0;
+    var sheets=Math.ceil(n/per);
+    $('pvcount').textContent=blank?'نسخة فارغة: '+sheets+' ورقة':(n+' رسالة • '+sheets+' ورقة للطباعة');
+    fit();
+  }
+  function fit(){
+    var w=$('preview').clientWidth, a5=$('size').value==='a5', mm=a5?148:297, px=mm*96/25.4;
+    var k=Math.min(.9,Math.max(.3,(w-4)/px));
+    document.querySelectorAll('.scaler').forEach(function(s){s.style.setProperty('--k',k)});
+  }
+  window.addEventListener('resize',fit);
+
+  // topics select
+  TOPICS.forEach(function(t,i){var o=document.createElement('option');o.value=i;o.textContent=t.label;$('topic').appendChild(o)});
+  try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv){$('list').value=sv.list||'';if(sv.date)$('date').value=sv.date;if(sv.topic)$('topic').value=sv.topic;if(sv.size)$('size').value=sv.size}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify({list:$('list').value,date:$('date').value,topic:$('topic').value,size:$('size').value}))}catch(e){}}
+
+  var mode='list';
+  function make(){
+    var list=parse($('list').value,TOPICS[+$('topic').value]);
+    mode='list';save();
+    if(!list.length){$('status').className='status err';$('status').textContent='القائمة فارغة. اكتب عائلة واحدة على الأقل.';render([],false);return}
+    $('status').className='status';$('status').textContent='حُضّرت '+list.length+' رسالة. راجعها في المعاينة ثم اطبع.';
+    render(list,false);
+  }
+  $('make').onclick=make;
+  $('blankBtn').onclick=function(){mode='blank';$('status').className='status';$('status').textContent='نسخة فارغة: يُكتب اسم العائلة والمشتة والسفير باليد.';render([{},{}],true)};
+  ['date','topic','size'].forEach(function(id){$(id).addEventListener('change',function(){save();if(mode==='blank')$('blankBtn').onclick();else if($('list').value.trim())make()})});
+  $('list').addEventListener('input',save);
+  $('print').onclick=function(){
+    if(!$('sheets').innerHTML){make();if(!$('sheets').innerHTML)return}
+    window.print();
+  };
+  if($('list').value.trim())make();
+})();
+</script>
+</body>
+</html>
