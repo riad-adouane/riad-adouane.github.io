@@ -266,14 +266,15 @@ footer ul{margin:0;padding:0 18px 0 0;color:var(--muted);font-size:14px;display:
   var SITE='https://riad-adouane.github.io';
   var END=Date.parse('2026-11-25T00:00:00+01:00');     // campaign closes at the end of Tue 24 Nov, Algeria time
   var TPL=[
-    {id:'t1',name:'رسالة عامة',text:'السلام عليكم {الاسم}، كيف حالك؟\nيوم السبت 28 نوفمبر ننتخب المجلس الشعبي البلدي للرحبات. أنا أساند رياض عدوان: ابن الرحبات، 27 سنة، ماستر في الحقوق، «يعرف القانون… ويعرف ناسه».\nصوّت للقائمة رقم 1، وضع علامة أمام اسمه: الرقم 03.\nتعرّف عليه: '+SITE},
+    {id:'t1',name:'رسالة عامة',text:'السلام عليكم {الاسم}، كيف حالك؟\nيوم السبت 28 نوفمبر ننتخب المجلس الشعبي البلدي للرحبات. أنا أساند رياض عدوان: ابن الرحبات، ماستر في الحقوق، «يعرف القانون… ويعرف ناسه».\nصوّت للقائمة رقم 1، وضع علامة أمام اسمه: الرقم 03.\nتعرّف عليه: '+SITE},
     {id:'t2',name:'قصيرة',text:'{الاسم}، يوم السبت 28 نوفمبر: القائمة رقم 1، وعلامة أمام رياض عدوان، الرقم 03. ابن الرحبات، «يعرف القانون… ويعرف ناسه».\n'+SITE},
-    {id:'t3',name:'للشباب',text:'السلام عليكم {الاسم}، الشباب لازم يكون عندهم صوت في البلدية. رياض عدوان شاب من الرحبات، عمره 27 سنة ودرس القانون.\nيوم السبت 28 نوفمبر: القائمة رقم 1، وعلامة أمام الرقم 03.\n'+SITE},
+    {id:'t3',name:'للشباب',text:'السلام عليكم {الاسم}، الشباب لازم يكون عندهم صوت في البلدية. رياض عدوان شاب من الرحبات، ماستر في الحقوق، «يعرف القانون… ويعرف ناسه».\nيوم السبت 28 نوفمبر: القائمة رقم 1، وعلامة أمام الرقم 03.\n'+SITE},
     {id:'t4',name:'تذكير بالعلامة',text:'تذكير مهم {الاسم}: في ورقة القائمة رقم 1 ضع علامة أمام رياض عدوان، الرقم 03، لأن الورقة دون علامة تُحتسب للقائمة فقط ولا تُحتسب له.\nالسبت 28 نوفمبر. '+SITE}
   ];
   var KEY='riad03-rasail-v1';
   var S={tpl:'t1',text:TPL[0].text,useName:true,people:[]};
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&saved.people)S=Object.assign(S,saved)}catch(e){}
+  var cur=TPL.find(function(t){return t.id===S.tpl});if(cur)S.text=cur.text;   // unedited template: always the latest wording
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   var $=function(id){return document.getElementById(id)};
   var IOS=/iPhone|iPad|iPod/.test(navigator.userAgent);
