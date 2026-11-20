@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>جرّب صوتك 03</title>
+<meta name="description" content="تدرّب في دقيقة على التصويت لرياض عدوان، القائمة رقم 1، الرقم 03، قبل يوم السبت 28 نوفمبر 2026.">
+<meta name="theme-color" content="#0A4A36">
+<meta property="og:type" content="website">
+<meta property="og:title" content="جرّب صوتك قبل يوم 28 نوفمبر">
+<meta property="og:description" content="تدرّب في دقيقة: ورقة القائمة رقم 1، وعلامة × أمام رياض عدوان رقم 03.">
+<meta property="og:image" content="https://riad-adouane.github.io/jarrib/og.jpg">
+<meta property="og:url" content="https://riad-adouane.github.io/jarrib/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800&family=Amiri:wght@700&display=swap">
+<style>
+/* Layout: a polling-station walk-through in four screens on one phone screen each: the stack of list papers,
+   the booth with the list 1 paper, the envelope into the transparent box, then the result. */
+:root{
+  --bg:#EEF3EF; --surface:#FFFFFF; --ink:#11261C; --muted:#5A6E62; --line:rgba(10,74,54,.16);
+  --green:#0A4A36; --green-2:#06301F; --red:#C21D25; --red-2:#D2232C; --gold:#F2D58C;
+  --paper:#FFFDF6; --paper-ink:#1B2A22; --paper-line:#D9D2BE; --mark:#C21D25; --ok:#1C8A50; --warn-bg:#FFF1F1; --ok-bg:#E5F5EA;
+  --f:"Alexandria","Segoe UI",Tahoma,sans-serif; --f-paper:"Amiri","Traditional Arabic",serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#07130E; --surface:#10211A; --ink:#E7F0EA; --muted:#9DB3A6; --line:rgba(190,230,210,.16);
+  --warn-bg:#3A1416; --ok-bg:#12301F; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#07130E; --surface:#10211A; --ink:#E7F0EA; --muted:#9DB3A6; --line:rgba(190,230,210,.16);
+  --warn-bg:#3A1416; --ok-bg:#12301F; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.7;min-height:100vh;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wrap{max-width:520px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px}
+.num{direction:ltr;unicode-bidi:isolate;display:inline-block;font-variant-numeric:tabular-nums}
+
+.top{background:linear-gradient(160deg,var(--green),var(--green-2));color:#fff;padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;gap:10px;padding-block:10px 12px}
+.top img{width:38px;height:38px;border-radius:50%;background:#fff;flex:none}
+.top b{display:block;font-size:16px;font-weight:800;line-height:1.3}
+.top small{display:block;font-size:12px;color:#CFE3D8;line-height:1.3}
+.dots{margin-inline-start:auto;display:flex;gap:6px;flex:none}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28)}
+.dots i.on{background:var(--gold)}
+.ended{background:var(--red);color:#fff;font-size:14px;font-weight:700}
+.ended .wrap{padding-block:8px}
+
+main .wrap{padding-block:18px 26px;display:flex;flex-direction:column;gap:14px}
+.screen{display:flex;flex-direction:column;gap:14px;animation:in .35s ease-out}
+@keyframes in{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kicker{font-size:13px;font-weight:700;color:var(--red)}
+h1{font-size:30px;font-weight:800;line-height:1.3;text-wrap:balance}
+h2{font-size:21px;font-weight:800;line-height:1.4;text-wrap:balance}
+.lead{color:var(--muted);font-size:15.5px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:16px;min-height:56px;padding:12px 18px 14px;
+  font-weight:800;font-size:18px;text-decoration:none;line-height:1.3;background:var(--green);color:#fff}
+.btn.red{background:var(--red-2)}
+.btn.line{background:transparent;border:1.5px solid var(--line);color:var(--ink);font-size:16px;min-height:50px;font-weight:700}
+.btn.wa{background:#1C8A50}
+.btn svg{width:22px;height:22px;flex:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{font-size:13px;color:var(--muted);text-align:center}
+
+/* intro */
+.hero{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,var(--green),var(--green-2));color:#fff;
+  display:grid;grid-template-columns:1fr 124px;align-items:end;min-height:200px}
+.hero .t{padding:20px 18px 20px 10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.hero h1{color:#fff}
+.hero p{color:#D5E7DD;font-size:14.5px;line-height:1.6}
+.hero img{width:124px;height:auto;display:block;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35))}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:15px}
+.steps li span{width:34px;height:34px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--green)}
+
+/* the stack of list papers */
+.stack{display:grid;gap:10px}
+.sheet{position:relative;display:flex;align-items:center;gap:12px;width:100%;text-align:right;border:1.5px solid var(--paper-line);border-radius:12px;
+  background:var(--paper);color:var(--paper-ink);padding:14px 14px 16px;box-shadow:0 3px 0 rgba(0,0,0,.06)}
+.sheet .lg{width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:#E9E4D6;color:#8A8270;font-weight:800;font-size:18px}
+.sheet img.lg{background:#fff}
+.sheet b{display:block;font-size:17px;font-weight:800;line-height:1.3}
+.sheet small{display:block;font-size:13px;color:#6D6A5E;line-height:1.4}
+.sheet:active{transform:translateY(1px)}
+
+/* the ballot */
+.paper{position:relative;background:var(--paper);color:var(--paper-ink);border-radius:6px;border:1px solid var(--paper-line);
+  box-shadow:0 18px 34px -18px rgba(20,40,30,.45),0 2px 0 rgba(0,0,0,.05);overflow:hidden}
+.paper::after{content:"نموذج للتدريب";position:absolute;inset:auto 0 42% 0;text-align:center;font-weight:800;font-size:44px;color:rgba(160,150,120,.13);transform:rotate(-18deg);pointer-events:none;white-space:nowrap}
+.ph{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;padding:12px 14px 10px;border-bottom:2px solid var(--paper-ink)}
+.ph img{width:52px;height:52px;border-radius:50%;background:#fff}
+.ph small{display:block;font-size:11.5px;color:#6D6A5E;line-height:1.4}
+.ph b{display:block;font-family:var(--f-paper);font-size:21px;line-height:1.35}
+.ph .ln{display:inline-block;margin-top:2px;font-weight:800;font-size:13px;background:var(--paper-ink);color:var(--paper);border-radius:6px;padding:1px 10px 3px}
+.cands{list-style:none;margin:0;padding:0}
+.cand{display:grid;grid-template-columns:38px 1fr 52px;align-items:center;width:100%;min-height:44px;border:0;border-top:1px solid var(--paper-line);
+  background:transparent;color:inherit;padding:4px 12px;text-align:right}
+.cands li:first-child .cand{border-top:0}
+.cand .no{font-weight:800;font-size:15px;color:#7A7462}
+.cand .nm{color:#B5AE98;letter-spacing:.18em;font-size:14px;overflow:hidden;white-space:nowrap}
+.cand .nm.real{color:var(--paper-ink);letter-spacing:0;font-family:var(--f-paper);font-size:19px}
+.cand .bx{justify-self:end;width:34px;height:34px;border:2px solid #8E8772;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#fff}
+.cand .bx svg{width:30px;height:30px;opacity:0;transform:scale(.4);transition:transform .18s ease-out,opacity .18s}
+.cand[aria-pressed="true"] .bx svg{opacity:1;transform:none}
+.cand[aria-pressed="true"] .bx{border-color:var(--mark)}
+.cand .bx svg path{stroke:var(--mark)}
+.cand.hint{animation:hint 1.2s ease-in-out 2}
+@keyframes hint{50%{background:rgba(242,213,140,.45)}}
+.pf{display:flex;justify-content:space-between;gap:10px;padding:8px 14px 10px;border-top:2px solid var(--paper-ink);font-size:11.5px;color:#6D6A5E}
+
+.msg{border-radius:14px;padding:12px 14px;font-size:15.5px;font-weight:700;line-height:1.6}
+.msg.warn{background:var(--warn-bg);color:var(--red);border:1px solid rgba(194,29,37,.25)}
+.msg.ok{background:var(--ok-bg);color:var(--ok);border:1px solid rgba(28,138,80,.25)}
+
+/* envelope and box */
+.booth{position:relative;height:300px;border-radius:20px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.box{position:absolute;left:50%;bottom:18px;width:200px;height:150px;margin-left:-100px;border:3px solid rgba(120,170,150,.85);border-top:0;border-radius:0 0 14px 14px;
+  background:linear-gradient(180deg,rgba(200,235,220,.35),rgba(170,215,195,.55))}
+.box::before{content:"";position:absolute;left:-12px;right:-12px;top:-14px;height:14px;border-radius:6px;background:rgba(120,170,150,.85)}
+.box::after{content:"";position:absolute;left:50%;top:-11px;width:80px;height:6px;margin-left:-40px;border-radius:3px;background:var(--green-2)}
+.box span{position:absolute;inset:auto 0 12px 0;text-align:center;font-size:12px;font-weight:700;color:var(--green)}
+.env{position:absolute;left:50%;top:26px;width:120px;height:78px;margin-left:-60px;background:#E8D9B5;border:2px solid #C7B485;border-radius:6px;
+  box-shadow:0 8px 16px -8px rgba(0,0,0,.35);transition:transform .9s cubic-bezier(.5,0,.75,0),opacity .3s .8s}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(155deg,transparent 49%,#C7B485 50%,transparent 52%),linear-gradient(25deg,transparent 49%,#C7B485 50%,transparent 52%)}
+.env.drop{transform:translateY(150px) scale(.9);opacity:0}
+.inbox{position:absolute;left:50%;bottom:30px;width:90px;height:56px;margin-left:-45px;background:#E8D9B5;border:2px solid #C7B485;border-radius:5px;opacity:0;transform:rotate(-8deg);transition:opacity .3s}
+.inbox.on{opacity:.9}
+
+/* result */
+.result{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px 16px 18px;position:relative;overflow:hidden}
+.seal{width:84px;height:84px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -10px rgba(28,138,80,.7)}
+.seal svg{width:50px;height:50px}
+.remind{display:grid;gap:8px;width:100%;text-align:right}
+.remind div{display:flex;gap:10px;align-items:center;background:var(--bg);border-radius:12px;padding:9px 12px;font-size:15px}
+.remind b{color:var(--red);white-space:nowrap;flex:none}
+.conf{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.conf i{position:absolute;top:-12px;width:8px;height:14px;border-radius:2px;animation:fall 2.4s ease-in forwards}
+@keyframes fall{to{transform:translateY(520px) rotate(540deg);opacity:.2}}
+.share{display:grid;gap:10px;width:100%}
+footer .wrap{padding-block:0 26px;text-align:center;font-size:12.5px;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <img src="../logo.webp" alt="شعار حزب جبهة التحرير الوطني" width="38" height="38">
+  <div><b>جرّب صوتك</b><small>رياض عدوان • القائمة رقم 1 • الرقم 03</small></div>
+  <div class="dots" aria-hidden="true"><i id="d0" class="on"></i><i id="d1"></i><i id="d2"></i><i id="d3"></i></div>
+</div></header>
+<div class="ended" id="ended" hidden><div class="wrap">انتهت الحملة الانتخابية يوم 24 نوفمبر. يمكنك التدرّب، وتذكّر: الاقتراع يوم السبت 28 نوفمبر.</div></div>
+
+<main><div class="wrap" id="app">
+
+<!-- 0. intro -->
+<section class="screen" id="s0">
+  <div class="hero">
+    <div class="t"><p class="kicker" style="color:var(--gold)">قبل يوم السبت 28 نوفمبر</p><h1>جرّب صوتك في دقيقة</h1><p>تدرّب على ما ستفعله داخل مكتب التصويت، حتى يُحسب صوتك لرياض عدوان.</p></div>
+    <img src="../riad.webp" alt="رياض عدوان" width="124" height="155">
+  </div>
+  <ol class="steps">
+    <li><span>1</span>خذ ورقة القائمة رقم 1</li>
+    <li><span>2</span>في المعزل: ضع علامة × أمام رياض عدوان رقم 03</li>
+    <li><span>3</span>ضع الورقة في الظرف، والظرف في الصندوق</li>
+  </ol>
+  <button class="btn red" type="button" id="start">ابدأ التجربة</button>
+  <p class="note">هذه تجربة للتدريب فقط، وليست تصويتاً حقيقياً. لا نحفظ أي معلومة عنك.</p>
+</section>
+
+<!-- 1. pick the list paper -->
+<section class="screen" id="s1" hidden>
+  <p class="kicker">الخطوة 1 من 3</p>
+  <h2>عند الدخول تأخذ ظرفاً وأوراق كل القوائم. اختر ورقة القائمة رقم 1</h2>
+  <div class="stack" id="stack">
+    <button class="sheet" type="button" data-list="3"><span class="lg">3</span><span><b>القائمة رقم 3</b><small>قائمة أخرى</small></span></button>
+    <button class="sheet" type="button" data-list="1"><img class="lg" src="../logo.webp" alt=""><span><b>القائمة رقم 1</b><small>حزب جبهة التحرير الوطني</small></span></button>
+    <button class="sheet" type="button" data-list="2"><span class="lg">2</span><span><b>القائمة رقم 2</b><small>قائمة أخرى</small></span></button>
+  </div>
+  <p class="msg warn" id="m1" role="status" hidden></p>
+</section>
+
+<!-- 2. mark the ballot -->
+<section class="screen" id="s2" hidden>
+  <p class="kicker">الخطوة 2 من 3 • داخل المعزل</p>
+  <h2>ضع علامة × أمام رياض عدوان، الرقم 03</h2>
+  <div class="paper">
+    <div class="ph"><img src="../logo.webp" alt=""><div><small>انتخاب أعضاء المجلس الشعبي البلدي • بلدية الرحبات</small><b>حزب جبهة التحرير الوطني</b><span class="ln">القائمة رقم 1</span></div></div>
+    <ul class="cands" id="cands"></ul>
+    <div class="pf"><span>ورقة افتراضية للتدريب</span><span>ليست ورقة التصويت الرسمية</span></div>
+  </div>
+  <p class="msg" id="m2" role="status" hidden></p>
+  <button class="btn" type="button" id="fold">ضع الورقة في الظرف</button>
+</section>
+
+<!-- 3. envelope into the box -->
+<section class="screen" id="s3" hidden>
+  <p class="kicker">الخطوة 3 من 3</p>
+  <h2>اخرج من المعزل، وضع الظرف في الصندوق</h2>
+  <div class="booth" aria-hidden="true"><div class="env" id="env"></div><div class="inbox" id="inbox"></div><div class="box"><span>صندوق الاقتراع</span></div></div>
+  <button class="btn" type="button" id="drop">ضع الظرف في الصندوق</button>
+</section>
+
+<!-- 4. result -->
+<section class="screen" id="s4" hidden>
+  <div class="result">
+    <div class="conf" id="conf" aria-hidden="true"></div>
+    <div class="seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h2>أحسنت! هكذا يُحسب صوتك لرياض عدوان</h2>
+    <p class="lead">ورقة القائمة رقم 1، وعلامة × أمام الرقم 03. بعدها توقّع في قائمة الناخبين، وتضع أصبعك في الحبر.</p>
+    <div class="remind">
+      <div><b>متى؟</b>يوم السبت 28 نوفمبر 2026</div>
+      <div><b>ماذا تأخذ؟</b>بطاقة التعريف، وبطاقة الناخب إن كانت عندك</div>
+      <div><b>انتبه:</b>الورقة دون علامة لا تُحسب لرياض</div>
+    </div>
+  </div>
+  <div class="share" id="share">
+    <p class="lead" style="text-align:center">علّم أهلك: أرسل التجربة لثلاثة منهم</p>
+    <a class="btn wa" id="sh-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>أرسلها في واتساب</a>
+    <div class="row2"><a class="btn line" id="sh-fb" target="_blank" rel="noopener">فيسبوك</a><button class="btn line" type="button" id="sh-copy">انسخ الرابط</button></div>
+    <p class="note" id="copied" role="status"></p>
+  </div>
+  <div class="row2"><button class="btn line" type="button" id="again">أعد التجربة</button><a class="btn line" href="../">تعرّف على رياض</a></div>
+</section>
+
+</div></main>
+<footer><div class="wrap">ورقة افتراضية للتدريب، وليست ورقة التصويت الرسمية • <a href="../" dir="ltr" style="white-space:nowrap">riad-adouane.github.io</a></div></footer>
+
+<script>
+(function(){
+  var URL_='https://riad-adouane.github.io/jarrib/';
+  var END=Date.parse('2026-11-25T00:00:00+01:00');
+  var N=13, ME=3;
+  var X='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke-width="3.4" stroke-linecap="round"/></svg>';
+  var $=function(id){return document.getElementById(id)};
+  var marked=0, step=0;
+
+  function show(n){
+    step=n;
+    for(var i=0;i<=4;i++){$('s'+i).hidden=i!==n}
+    for(var j=0;j<4;j++){$('d'+j).classList.toggle('on',j<=Math.min(n,3))}
+    window.scrollTo(0,0);
+  }
+
+  // ballot rows
+  var ul=$('cands');
+  for(var k=1;k<=N;k++){
+    var no=(k<10?'0':'')+k, li=document.createElement('li'), b=document.createElement('button');
+    b.type='button';b.className='cand';b.setAttribute('aria-pressed','false');b.dataset.n=k;
+    b.setAttribute('aria-label',k===ME?'رياض عدوان، الرقم 03':'المترشح رقم '+no);
+    b.innerHTML='<span class="no num">'+no+'</span><span class="nm'+(k===ME?' real':'')+'">'+(k===ME?'رياض عدوان':'……………………………')+'</span><span class="bx">'+X+'</span>';
+    li.appendChild(b);ul.appendChild(li);
+  }
+  ul.addEventListener('click',function(e){
+    var b=e.target.closest('.cand');if(!b)return;
+    var n=+b.dataset.n; marked=(marked===n)?0:n;          // one mark; tapping again removes it
+    ul.querySelectorAll('.cand').forEach(function(c){c.setAttribute('aria-pressed',+c.dataset.n===marked)});
+    $('m2').hidden=true;
+    if(navigator.vibrate)try{navigator.vibrate(15)}catch(_){}
+  });
+
+  // step 1
+  $('start').onclick=function(){show(1)};
+  $('stack').addEventListener('click',function(e){
+    var s=e.target.closest('.sheet');if(!s)return;
+    if(s.dataset.list==='1'){$('m1').hidden=true;show(2);return}
+    $('m1').textContent='هذه ليست ورقة القائمة رقم 1. خذ ورقة حزب جبهة التحرير الوطني، القائمة رقم 1.';$('m1').hidden=false;
+  });
+
+  // step 2
+  function say(cls,txt){var m=$('m2');m.className='msg '+cls;m.textContent=txt;m.hidden=false}
+  $('fold').onclick=function(){
+    if(marked===ME){show(3);return}
+    var me=ul.querySelector('[data-n="'+ME+'"]');me.classList.remove('hint');void me.offsetWidth;me.classList.add('hint');
+    if(!marked)say('warn','انتبه: الورقة دون علامة تُحتسب للقائمة فقط، ولا تُحتسب لرياض. ضع علامة × أمام الرقم 03.');
+    else say('warn','هذه العلامة ليست أمام رياض عدوان. ابحث عن الرقم 03 وضع العلامة أمامه.');
+  };
+
+  // step 3
+  $('drop').onclick=function(){
+    var b=this;b.disabled=true;$('env').classList.add('drop');
+    setTimeout(function(){$('inbox').classList.add('on')},800);
+    setTimeout(function(){show(4);confetti();b.disabled=false;$('env').classList.remove('drop');$('inbox').classList.remove('on')},1500);
+  };
+
+  function confetti(){
+    var c=$('conf');c.innerHTML='';
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var cols=['#C21D25','#F2D58C','#1C8A50','#0A4A36','#FFFFFF'];
+    for(var i=0;i<46;i++){var p=document.createElement('i');p.style.left=(Math.random()*100)+'%';p.style.background=cols[i%cols.length];
+      p.style.animationDelay=(Math.random()*.6)+'s';p.style.animationDuration=(1.8+Math.random()*1.4)+'s';c.appendChild(p)}
+    if(navigator.vibrate)try{navigator.vibrate([30,60,30])}catch(_){}
+  }
+
+  // share
+  var shareText='جرّبت التصويت لرياض عدوان في دقيقة: ورقة القائمة رقم 1، وعلامة × أمام الرقم 03. جرّب أنت قبل يوم السبت 28 نوفمبر:\n'+URL_;
+  $('sh-wa').href='https://wa.me/?text='+encodeURIComponent(shareText);
+  $('sh-fb').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(URL_);
+  $('sh-copy').onclick=function(){
+    try{navigator.clipboard.writeText(URL_).then(function(){$('copied').textContent='نُسخ الرابط.'},function(){$('copied').textContent=URL_})}
+    catch(_){$('copied').textContent=URL_}
+  };
+  $('again').onclick=function(){marked=0;ul.querySelectorAll('.cand').forEach(function(c){c.setAttribute('aria-pressed','false')});$('m2').hidden=true;show(0)};
+
+  if(Date.now()>=END){$('ended').hidden=false;$('share').hidden=true}
+})();
+</script>
+</body>
+</html>
