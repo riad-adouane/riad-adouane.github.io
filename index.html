@@ -47,6 +47,8 @@ h1,h2,h3{font-family:var(--f-display);line-height:1.3;text-wrap:balance;margin:0
 h2{font-size:clamp(28px,4.4vw,42px);font-weight:800;color:var(--ink)}
 h3{font-size:21px;font-weight:700}
 p{margin:0}
+.vid{max-width:540px;margin-inline:auto;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#06301F;box-shadow:0 14px 40px rgba(6,48,31,.28)}
+.vid video{display:block;width:100%;height:100%;object-fit:contain;background:#06301F}
 .eyebrow{font-size:14px;font-weight:700;color:var(--red);letter-spacing:.02em}
 .lead{color:var(--muted);font-size:18px;max-width:62ch}
 .num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
@@ -293,7 +295,7 @@ footer b{color:#fff}
     <h1>رياض عدوان</h1>
     <p class="slogan">«التزام بنقل الرحبات إلى مرحلة جديدة»</p>
     <p class="lead">مترشح للمجلس الشعبي البلدي لبلدية الرحبات، في <b>قائمة حزب جبهة التحرير الوطني رقم 1</b>، بالرقم <b class="num">03</b>.</p>
-    <div class="btns"><a class="btn red" href="#vote">كيف تصوّت لي؟</a><a class="btn ghost" href="#vision">رؤيتي للرحبات</a></div>
+    <div class="btns"><a class="btn red" href="#vote">كيف تصوّت لي؟</a><a class="btn ghost" href="#liqaa">شاهد اللقاء ▶</a><a class="btn ghost" href="#vision">رؤيتي للرحبات</a></div>
     <div class="chips">
       <div class="chip"><strong>ابن الرحبات</strong><small>شاب من أبنائها</small></div>
       <div class="chip"><strong>ماستر</strong><small>في الحقوق</small></div>
@@ -306,6 +308,11 @@ footer b{color:#fff}
     <div class="badge"><small>المترشح</small><strong class="num">03</strong></div>
   </div>
 </div></div>
+
+<section id="liqaa"><div class="wrap">
+  <div class="head"><p class="eyebrow">فيديو • 9 دقائق</p><h2>لقاء مع المترشح رياض عدوان</h2><p class="lead">«الرحبات… حكاية أرض ووعد»، ثم ثمانية أسئلة يجيب عنها رياض عدوان كاملةً.</p></div>
+  <div class="vid"><video id="liqaa-v" controls playsinline preload="none" poster="video/poster.jpg" width="1080" height="1350" aria-label="فيديو لقاء مع المترشح رياض عدوان"></video></div>
+</div></section>
 
 <section><div class="wrap">
   <div class="quote">
@@ -509,5 +516,12 @@ footer b{color:#fff}
 })();
 </script>
 
+<script>
+{const v=document.getElementById('liqaa-v'),src='video/master.m3u8';
+ if(v){ if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=src}
+ else{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js';
+  s.onload=()=>{if(window.Hls&&Hls.isSupported()){const h=new Hls({capLevelToPlayerSize:true,abrEwmaDefaultEstimate:3000000});h.loadSource(src);h.attachMedia(v)}else{v.src=src}};
+  document.head.appendChild(s)}}}
+</script>
 </body>
 </html>
