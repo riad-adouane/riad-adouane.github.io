@@ -49,6 +49,9 @@ h3{font-size:21px;font-weight:700}
 p{margin:0}
 .vid{max-width:540px;margin-inline:auto;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#06301F;box-shadow:0 14px 40px rgba(6,48,31,.28)}
 .vid video{display:block;width:100%;height:100%;object-fit:contain;background:#06301F}
+.radios{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;max-width:720px;margin-inline:auto}
+.rv{margin:0}.rv video{display:block;width:100%;height:auto;aspect-ratio:4/5;border-radius:16px;background:#06301F;box-shadow:0 10px 30px rgba(6,48,31,.22)}
+.rv figcaption{margin-top:10px;text-align:center;font-weight:700;color:var(--green)}
 .eyebrow{font-size:14px;font-weight:700;color:var(--red);letter-spacing:.02em}
 .lead{color:var(--muted);font-size:18px;max-width:62ch}
 .num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
@@ -312,6 +315,14 @@ footer b{color:#fff}
 <section id="liqaa"><div class="wrap">
   <div class="head"><p class="eyebrow">فيديو • 9 دقائق</p><h2>لقاء مع المترشح رياض عدوان</h2><p class="lead">«الرحبات… حكاية أرض ووعد»، ثم ثمانية أسئلة يجيب عنها رياض عدوان كاملةً.</p></div>
   <div class="vid"><video id="liqaa-v" controls playsinline preload="none" poster="video/poster.jpg" width="1080" height="1350" aria-label="فيديو لقاء مع المترشح رياض عدوان"></video></div>
+</div></section>
+
+<section id="radio" class="tint"><div class="wrap">
+  <div class="head"><p class="eyebrow">على أمواج إذاعة الجزائر من باتنة</p><h2>رياض عدوان في الإذاعة</h2></div>
+  <div class="radios">
+    <figure class="rv"><video controls playsinline preload="none" poster="video/radio/poster-21nov.jpg" src="video/radio/radio-batna-21nov.mp4" width="1080" height="1350" aria-label="تدخل رياض عدوان في إذاعة باتنة يوم 21 نوفمبر 2026"></video>
+    <figcaption>تدخّل السبت 21 نوفمبر 2026 • 3 دقائق</figcaption></figure>
+  </div>
 </div></section>
 
 <section><div class="wrap">
